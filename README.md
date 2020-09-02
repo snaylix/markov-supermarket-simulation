@@ -17,8 +17,18 @@ User Story
   - Add lines for missing timestamps
   - Shifted location column
   - Output: df
-2. Build transition matrix
-3. Write program for visualisation
+2. Build transition matrix (6x6)
+3. Implement a Markov Chain-based simulator
+  - for one customers
+  - for many customers
+4. Write program for visualisation
+  - create supermarket layout
+  - create one customer
+  - create many customers
+  - create movements for customer
+  - create boundaries for movemen
+  - take care of stacked customer problem
+  - slow down the animation
 
 
 
