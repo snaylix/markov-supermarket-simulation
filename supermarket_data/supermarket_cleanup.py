@@ -58,7 +58,7 @@ data = data.drop('last_loc', axis = 1)
 
 
 filled = data.groupby('customer_no').resample('T').ffill()
-filled = filled.drop(['timestamp', 'customer_no', 'origin'], axis = 1)
+filled = filled.drop(['timestamp', 'customer_no'], axis = 1)
 
 filled = filled.reset_index()
 
@@ -68,14 +68,11 @@ filled = filled.reset_index()
 filled['previous'] = filled.groupby('customer_no')['location'].shift(1)
 filled['previous'] = filled['previous'].replace(np.nan, 'entrance', regex=True)
 
-
-
-
 # write to file
 
 
 with open('supermarket_all.csv', 'w') as file:
-    file.writelines(filled)
+    filled.to_csv(filled)
 
 
 ''
