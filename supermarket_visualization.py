@@ -8,8 +8,6 @@ from random import choices
 
 MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
 
-
-
 class Location:
 
     def __init__(self, x, y, current_loc='entrance'):
@@ -26,7 +24,7 @@ class Location:
         probabilities = MATRIX[self.current_loc]
         while self.current_loc != 'checkout':
             self.current_loc = choices(self.current_loc, probabilities)[0]
-            
+
 
 
 
