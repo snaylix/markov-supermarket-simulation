@@ -6,23 +6,29 @@ from random import choices
 ##### TEMPORARY FOR INPUTTING TRANSITION MATRIX.
 ## TO DO -- change into class?
 
-MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).to_dict()
+MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
+
+
 
 class Location:
 
-    def __init__(self):
-        ...
+    def __init__(self, x, y, current_loc='entrance'):
+        self.x =
+        self.y =
+        self.current_loc = current_loc
 
-    def next_loc(self, current_loc, probabilities):
+    def next_loc(self):
         '''
         MCMC simulation of customer behaviour
         current_loc: where is customer at start
         probabilities:
         '''
-        self.current_loc = current_loc
-        self.probabilities = MATRIX[self.current_loc]
-        ...
-        # next_loc =
+        probabilities = MATRIX[self.current_loc]
+        while self.current_loc != 'checkout':
+            self.current_loc = choices(self.current_loc, probabilities)[0]
+            
+
+
 
 class Customer:
 
