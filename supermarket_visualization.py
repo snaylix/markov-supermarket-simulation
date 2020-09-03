@@ -1,6 +1,6 @@
 import cv2
 import pandas as pd
-from random import choices
+from random import choices, randint
 
 LOCATION = {'entrance': (700, 850),
             'fruits': (400, 850),
@@ -20,6 +20,14 @@ COLOR = {1: (212, 38, 167),
 ## TO DO -- change into class?
 
 MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
+
+
+class Color:
+
+    def __init__(self):
+        self.red = randint(0,255)
+        self.green = randint(0,255)
+        self.blue = randint(0,255)
 
 class Location:
 
