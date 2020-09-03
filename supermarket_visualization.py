@@ -31,6 +31,7 @@ class Color:
 
 
 class Location:
+    history = []
 
     def __init__(self):
         ...
@@ -44,6 +45,8 @@ class Location:
         probabilities = MATRIX[self.current_loc]
         while self.current_loc != 'checkout':
             self.current_loc = choices(self.current_loc, probabilities)[0]
+            history.append(self.current_loc)
+        return history
 
 
 class Customer:
@@ -51,6 +54,7 @@ class Customer:
     def __init__(self, color, x=850, y=700, name='entrance'):
         self.x = x
         self.y = y
+        self.color = color
         self.name = name
 
     def draw(self, frame):
@@ -64,7 +68,7 @@ class Customer:
         return f"customer at {self.x}/{self.y}"
 
 
-c1 = Customer(Location(), COLOR[1])
+c1 = Customer(Location(), Color())
 
 market = cv2.imread('market.png')
 
