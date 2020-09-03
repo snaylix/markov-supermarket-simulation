@@ -5,8 +5,6 @@ import re
 from datetime import timedelta
 
 files = [f for f in os.listdir('.') if f.endswith('.csv') and not f.startswith('.')]
-
-
 # get data
 def get_data(file):
     '''
@@ -70,9 +68,4 @@ filled['previous'] = filled['previous'].replace(np.nan, 'entrance', regex=True)
 
 # write to file
 
-
-with open('supermarket_all.csv', 'w') as file:
-    filled.to_csv(filled)
-
-
-''
+filled.to_csv('supermarket_all.csv')
