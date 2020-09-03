@@ -17,7 +17,7 @@ COLOR = {1: (212, 38, 167),
          6: (205, 114, 255)}
 
 ##### TEMPORARY FOR INPUTTING TRANSITION MATRIX.
-## TO DO -- change into class?
+# TO DO -- change into class?
 
 MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
 
@@ -25,9 +25,10 @@ MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
 class Color:
 
     def __init__(self):
-        self.red = randint(0,255)
-        self.green = randint(0,255)
-        self.blue = randint(0,255)
+        self.red = randint(0, 255)
+        self.green = randint(0, 255)
+        self.blue = randint(0, 255)
+
 
 class Location:
 
@@ -47,7 +48,7 @@ class Location:
 
 class Customer:
 
-    def __init__(self, x=850, y=700, name='entrance'):
+    def __init__(self, color, x=850, y=700, name='entrance'):
         self.x = x
         self.y = y
         self.name = name
@@ -64,8 +65,6 @@ class Customer:
 
 
 c1 = Customer(Location(), COLOR[1])
-
-
 
 market = cv2.imread('market.png')
 
