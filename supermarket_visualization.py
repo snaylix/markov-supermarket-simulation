@@ -1,22 +1,30 @@
 import cv2
+import pandas as pd
+from random import choices
 
 
-LOCATION = {'entrance': (700, 850),
-            'fruits': (400, 850),
-            'spices': (400, 625),
-            'dairy': (400, 375),
-            'drinks': (400, 150),
-            'checkout': (700, 400)}
+##### TEMPORARY FOR INPUTTING TRANSITION MATRIX.
+## TO DO -- change into class?
 
-COLOR = {1: (212, 38, 167),
-         2: (222, 30, 78),
-         3: (169, 74, 37),
-         4: (222, 165, 30),
-         5: (178, 212, 29),
-         6: (205, 114, 255)}
-
+MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).to_dict()
 
 class Location:
+
+    def __init__(self):
+        ...
+
+    def next_loc(self, current_loc, probabilities):
+        '''
+        MCMC simulation of customer behaviour
+        current_loc: where is customer at start
+        probabilities:
+        '''
+        self.current_loc = current_loc
+        self.probabilities = MATRIX[self.current_loc]
+        ...
+        # next_loc =
+
+class Customer:
 
     def __init__(self, x=850, y=700, name='entrance'):
         self.x = x
@@ -33,6 +41,7 @@ class Customer:
         self.x = location.x
         self.y = location.y
         self.color = color
+
 
     def draw(self, frame):
         frame[self.y:self.y+20, self.x:self.x+20] = self.color
