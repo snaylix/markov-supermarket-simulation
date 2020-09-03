@@ -21,7 +21,9 @@ COLOR = {1: (212, 38, 167),
 
 MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
 
+
 class Location:
+    history = []
 
     def __init__(self):
         ...
@@ -35,6 +37,7 @@ class Location:
         probabilities = MATRIX[self.current_loc]
         while self.current_loc != 'checkout':
             self.current_loc = choices(self.current_loc, probabilities)[0]
+            history.append(self.current_loc)
 
 
 class Customer:
