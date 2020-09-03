@@ -1,6 +1,6 @@
 import cv2
 import pandas as pd
-from random import choices
+from random import choices, randint
 
 LOCATION = {'entrance': (700, 850),
             'fruits': (400, 850),
@@ -22,6 +22,13 @@ COLOR = {1: (212, 38, 167),
 MATRIX = pd.read_csv('supermarket_transitions.csv', index_col=0).T.to_dict()
 
 
+class Color:
+
+    def __init__(self):
+        self.red = randint(0,255)
+        self.green = randint(0,255)
+        self.blue = randint(0,255)
+
 class Location:
     history = []
 
@@ -38,13 +45,15 @@ class Location:
         while self.current_loc != 'checkout':
             self.current_loc = choices(self.current_loc, probabilities)[0]
             history.append(self.current_loc)
+        return history
 
 
 class Customer:
 
-    def __init__(self, x=850, y=700, name='entrance'):
+    def __init__(self, color, x=850, y=700, name='entrance'):
         self.x = x
         self.y = y
+        self.color = color
         self.name = name
 
     def draw(self, frame):
@@ -58,7 +67,7 @@ class Customer:
         return f"customer at {self.x}/{self.y}"
 
 
-c1 = Customer(Location(), COLOR[1])
+c1 = Customer(Location(), Color())
 
 
 
