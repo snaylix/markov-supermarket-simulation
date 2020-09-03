@@ -45,8 +45,6 @@ class Location:
             self.current_loc = choices(self.current_loc, probabilities)[0]
 
 
-
-
 class Customer:
 
     def __init__(self, x=850, y=700, name='entrance'):
